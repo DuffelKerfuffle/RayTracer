@@ -1,0 +1,3 @@
+/home/maulik/RayTracer/build/CMakeFiles/ppm_demo.dir
+/home/maulik/RayTracer/build/CMakeFiles/edit_cache.dir
+/home/maulik/RayTracer/build/CMakeFiles/rebuild_cache.dir
