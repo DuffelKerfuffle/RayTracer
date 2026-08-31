@@ -97,6 +97,7 @@ CMakeFiles/ppm_demo.dir/main.cpp.o
  /usr/include/c++/11/tr1/poly_hermite.tcc
  /usr/include/c++/11/tr1/poly_laguerre.tcc
  /usr/include/c++/11/tr1/riemann_zeta.tcc
+ /usr/include/c++/11/cstdlib
  /usr/include/c++/11/iostream
  /usr/include/c++/11/ostream
  /usr/include/c++/11/ios
@@ -171,7 +172,6 @@ CMakeFiles/ppm_demo.dir/main.cpp.o
  /usr/include/c++/11/bits/functional_hash.h
  /usr/include/c++/11/bits/string_view.tcc
  /usr/include/c++/11/ext/string_conversions.h
- /usr/include/c++/11/cstdlib
  /usr/include/c++/11/cstdio
  /usr/include/stdio.h
  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h
@@ -235,8 +235,11 @@ CMakeFiles/ppm_demo.dir/main.cpp.o
  /usr/include/c++/11/pstl/execution_defs.h
  /home/maulik/RayTracer/colour.h
  /home/maulik/RayTracer/vec3.h
+ /home/maulik/RayTracer/interval.h
  /home/maulik/RayTracer/ray.h
+ /home/maulik/RayTracer/camera.h
  /home/maulik/RayTracer/hittable.h
+ /home/maulik/RayTracer/material.h
  /home/maulik/RayTracer/hittable_list.h
  /usr/include/c++/11/vector
  /usr/include/c++/11/bits/stl_vector.h

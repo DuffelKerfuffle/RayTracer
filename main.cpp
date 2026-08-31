@@ -1,65 +1,134 @@
 #include "rtweekend.h"
-
+#include "camera.h"
 #include "hittable.h"
 #include "hittable_list.h"
 #include "sphere.h"
+#include "material.h"
+#include "SceneMetadata.h"
+#include <random>
+#include <fstream>
+#include <iostream>
+#include <filesystem>
+
+// void renderToFile(
+//     hittable_list& world,
+//     camera& cam,
+//     const std::string& filename
+// ) {
+//     std::ofstream file(filename);
+
+//     auto old_buffer = std::cout.rdbuf(file.rdbuf());
+
+//     cam.render(world);
+
+//     std::cout.rdbuf(old_buffer);
+// }
 
 
-colour ray_colour(const ray& r, const hittable& world) {
-    hit_record rec;
-    if (world.hit(r, interval(0, infinity), rec)) {
-        return 0.5 * (rec.normal + colour(1,1,1));
-    }
+// SceneMetadata generateRandomScene(
+//     hittable_list& world,
+//     camera& cam
+// ) {
+//     SceneMetadata metadata;
+//     float r = randomNumber(0.0f, 1.0f);
+//     float g = randomNumber(0.0f, 1.0f);
+//     float b = randomNumber(0.0f, 1.0f);
 
-    vec3 unit_direction = unit_vector(r.direction());
-    auto a = 0.5*(unit_direction.y() + 1.0);
-    return (1.0-a)*colour(1.0, 1.0, 1.0) + a*colour(0.5, 0.7, 1.0);
-}
+//     auto material = make_shared<lambertian>(colour(r, g, b));
+
+//     float x = randomNumber(0.0f, 100.0f);
+//     float y = randomNumber(0.0f, 100.0f);
+//     float z = randomNumber(0.0f, 100.0f);
+//     float rad = randomNumber(0.0f, 100.0f);
+//     world.add(make_shared<sphere>(point3(x, y, z ), rad));
+
+//     cam.aspect_ratio = 16.0 / 9.0;
+//     cam.image_width = 400;
+
+//     int depth = randomNumber(0, 100);
+//     cam.max_depth         = depth;
+    
+//     float vfov = randomNumber(0.0f, 100.0f);
+//     cam.vfov     = vfov;
+    
+//     float lookFromX = randomNumber(0.0f, 100.0f);
+//     float lookFromY = randomNumber(0.0f, 100.0f);
+//     float lookFromZ = randomNumber(0.0f, 100.0f);
+//     cam.lookfrom = point3(lookFromX, lookFromY, lookFromZ);
+
+//     float lookAtX = randomNumber(0.0f, 100.0f);
+//     float lookAtY = randomNumber(0.0f, 100.0f);
+//     float lookAtZ = randomNumber(0.0f, 100.0f);
+    
+//     cam.lookat   = point3(lookAtX, lookAtY, lookAtZ);
+    
+//     cam.vup      = vec3(0,1,0);
+    
+//     float defocus = randomNumber(0.0f, 100.0f);
+//     float focus = randomNumber(0.0f, 100.0f);
+//     cam.defocus_angle = defocus;
+//     cam.focus_dist    = focus;
+    
+//     cam.samples_per_pixel = 4;
+//     cam.render(world);
+//     // saveImage("dataset/4spp/" + std::to_string(id));
+
+//     cam.samples_per_pixel = 256;
+//     cam.render(world);
+//     // saveImage("dataset/256spp/" + std::to_string(id));
+//     return {r, g, b, x, y, z, rad, depth, vfov, lookFromX, lookFromY, lookFromZ, lookAtX, lookAtY, lookAtZ, defocus, focus};
+// }
 
 int main() {
 
-    auto aspect_ratio = 16.0 / 9.0;
-    int image_width = 400;
-
-    // calculate image height, ensuring minimum of 1
-    int image_height = int(image_width / aspect_ratio);
-    image_height = (image_height < 1) ? 1 : image_height;
-
-    // World
-
     hittable_list world;
 
-    world.add(make_shared<sphere>(point3(0,0,-1), 0.5));
-    world.add(make_shared<sphere>(point3(0,-100.5,-1), 100));
+    // auto material_ground = make_shared<lambertian>(colour(0.8, 0.8, 0.0));
+    // auto material_center = make_shared<lambertian>(colour(0.1, 0.2, 0.5));
+    // auto material_left   = make_shared<dielectric>(1.50);
+    // auto material_bubble = make_shared<dielectric>(1.00 / 1.50);
+    // auto material_right  = make_shared<metal>(colour(0.8, 0.6, 0.2), 1.0);
 
-    // camera settings
-    auto focal_length = 1.0;
-    auto viewport_height = 2.0;
-    auto viewport_width = viewport_height * (double(image_width)/image_height);
-    auto camera_center = point3(0, 0, 0);
+    // world.add(make_shared<sphere>(point3( 0.0, -100.5, -1.0), 100.0, material_ground));
+    // world.add(make_shared<sphere>(point3( 0.0,    0.0, -1.2),   0.5, material_center));
+    // world.add(make_shared<sphere>(point3(-1.0,    0.0, -1.0),   0.5, material_left));
+    // world.add(make_shared<sphere>(point3(-1.0,    0.0, -1.0),   0.4, material_bubble));
+    // world.add(make_shared<sphere>(point3( 1.0,    0.0, -1.0),   0.5, material_right));
 
-    // calculate the vectors across horizontal and down vertical viewport edges
-    auto viewport_u = vec3(viewport_width, 0, 0);
-    auto viewport_v = vec3(0, -viewport_height, 0);
+    camera cam;
 
-    // calculate the horizontal and vertical delta vectors from pixel to pixel    
-    auto pixel_delta_u = viewport_u / image_width;
-    auto pixel_delta_v = viewport_v / image_height;
+    for (int i = 0; i < 1000; ++i) {
 
-    auto viewport_upper_left = camera_center - vec3(0, 0, focal_length) - viewport_u/2 - viewport_v/2;
-    auto pixel00_loc = viewport_upper_left + 0.5 * (pixel_delta_u + pixel_delta_v);
-    std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+        std::string dir =
+            "dataset/sample_" + std::to_string(i);
 
-    for(int j = 0; j < image_height; j++){
-        std::clog << "\rScanlines remaining: " << (image_height - j) << ' ' << std::flush;
-        for(int i = 0; i < image_width; i++){
-            auto pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
-            auto ray_direction = pixel_center - camera_center;
-            ray r(camera_center, ray_direction);
-            
-            colour pixel_colour = ray_colour(r, world);
-            write_colour(std::cout, pixel_colour);
-        }
+        std::filesystem::create_directories(dir);
+
+        hittable_list world;
+        camera cam;
+
+        SceneMetadata metadata =
+            generateRandomScene(world, cam);
+
+        cam.samples_per_pixel = metadata.samples_noisy;
+
+        renderToFile(
+            world,
+            cam,
+            dir + "/noisy.ppm"
+        );
+
+        cam.samples_per_pixel = metadata.samples_clean;
+
+        renderToFile(
+            world,
+            cam,
+            dir + "/clean.ppm"
+        );
+
+        saveMetadata(
+            metadata,
+            dir + "/metadata.json"
+        );
     }
-    std::clog << "\rDone.                 \n";
 }

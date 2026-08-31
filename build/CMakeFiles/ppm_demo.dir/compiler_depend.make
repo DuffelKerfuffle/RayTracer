@@ -96,6 +96,7 @@ CMakeFiles/ppm_demo.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  /usr/include/c++/11/cstdlib \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -170,7 +171,6 @@ CMakeFiles/ppm_demo.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/bits/functional_hash.h \
   /usr/include/c++/11/bits/string_view.tcc \
   /usr/include/c++/11/ext/string_conversions.h \
-  /usr/include/c++/11/cstdlib \
   /usr/include/c++/11/cstdio \
   /usr/include/stdio.h \
   /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
@@ -234,8 +234,11 @@ CMakeFiles/ppm_demo.dir/main.cpp.o: ../main.cpp \
   /usr/include/c++/11/pstl/execution_defs.h \
   ../colour.h \
   ../vec3.h \
+  ../interval.h \
   ../ray.h \
+  ../camera.h \
   ../hittable.h \
+  ../material.h \
   ../hittable_list.h \
   /usr/include/c++/11/vector \
   /usr/include/c++/11/bits/stl_vector.h \
@@ -246,15 +249,19 @@ CMakeFiles/ppm_demo.dir/main.cpp.o: ../main.cpp \
 
 ../sphere.h:
 
-/usr/include/c++/11/bits/vector.tcc:
-
 /usr/include/c++/11/bits/stl_bvector.h:
 
 ../hittable_list.h:
 
+/usr/include/c++/11/bits/vector.tcc:
+
+../material.h:
+
 ../hittable.h:
 
 ../ray.h:
+
+../interval.h:
 
 ../vec3.h:
 
@@ -332,6 +339,8 @@ CMakeFiles/ppm_demo.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/c++/11/initializer_list:
 
+../camera.h:
+
 /usr/include/c++/11/bits/range_access.h:
 
 /usr/include/c++/11/bits/stl_function.h:
@@ -383,6 +392,10 @@ CMakeFiles/ppm_demo.dir/main.cpp.o: ../main.cpp \
 /usr/include/c++/11/cctype:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/usr/include/c++/11/bits/ostream.tcc:
+
+/usr/include/c++/11/clocale:
 
 /usr/include/c++/11/bits/allocated_ptr.h:
 
@@ -622,10 +635,6 @@ CMakeFiles/ppm_demo.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/c++/11/bits/ptr_traits.h:
 
-/usr/include/c++/11/bits/ostream.tcc:
-
-/usr/include/c++/11/clocale:
-
 /usr/include/c++/11/debug/debug.h:
 
 /usr/include/c++/11/bits/predefined_ops.h:
@@ -634,9 +643,9 @@ CMakeFiles/ppm_demo.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/c++/11/bit:
 
-/usr/include/c++/11/cstdlib:
-
 /usr/include/c++/11/bits/stl_iterator_base_types.h:
+
+/usr/include/c++/11/cstdlib:
 
 /usr/include/c++/11/tr1/poly_laguerre.tcc:
 

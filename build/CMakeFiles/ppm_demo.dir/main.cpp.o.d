@@ -83,9 +83,10 @@ CMakeFiles/ppm_demo.dir/main.cpp.o: /home/maulik/RayTracer/main.cpp \
  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
- /usr/include/c++/11/tr1/riemann_zeta.tcc /usr/include/c++/11/iostream \
- /usr/include/c++/11/ostream /usr/include/c++/11/ios \
- /usr/include/c++/11/iosfwd /usr/include/c++/11/bits/stringfwd.h \
+ /usr/include/c++/11/tr1/riemann_zeta.tcc /usr/include/c++/11/cstdlib \
+ /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
+ /usr/include/c++/11/ios /usr/include/c++/11/iosfwd \
+ /usr/include/c++/11/bits/stringfwd.h \
  /usr/include/c++/11/bits/memoryfwd.h /usr/include/c++/11/bits/postypes.h \
  /usr/include/c++/11/cwchar /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
@@ -140,9 +141,8 @@ CMakeFiles/ppm_demo.dir/main.cpp.o: /home/maulik/RayTracer/main.cpp \
  /usr/include/c++/11/bits/stl_construct.h /usr/include/c++/11/string_view \
  /usr/include/c++/11/bits/functional_hash.h \
  /usr/include/c++/11/bits/string_view.tcc \
- /usr/include/c++/11/ext/string_conversions.h /usr/include/c++/11/cstdlib \
- /usr/include/c++/11/cstdio /usr/include/stdio.h \
- /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+ /usr/include/c++/11/ext/string_conversions.h /usr/include/c++/11/cstdio \
+ /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
@@ -190,8 +190,9 @@ CMakeFiles/ppm_demo.dir/main.cpp.o: /home/maulik/RayTracer/main.cpp \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
  /home/maulik/RayTracer/colour.h /home/maulik/RayTracer/vec3.h \
- /home/maulik/RayTracer/ray.h /home/maulik/RayTracer/hittable.h \
- /home/maulik/RayTracer/hittable_list.h /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_vector.h \
+ /home/maulik/RayTracer/interval.h /home/maulik/RayTracer/ray.h \
+ /home/maulik/RayTracer/camera.h /home/maulik/RayTracer/hittable.h \
+ /home/maulik/RayTracer/material.h /home/maulik/RayTracer/hittable_list.h \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc /home/maulik/RayTracer/sphere.h
